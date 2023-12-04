@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>age calculator</title>
+    <link rel="stylesheet" href="agecalculator.css" />
+	<style>
+	
+	@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap");
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: hsl(0, 0%, 90%);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(0, 0%, 100%);
+  padding: 20px 130px 20px 50px;
+  border-radius: 0px 0px 170px 0px;
+}
+header {
+  margin-left: -60px;
+}
+label small {
+  position: absolute;
+  margin-left: 20px;
+  color: hsl(0, 1%, 44%);
+}
+input {
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+  margin-top: 25px;
+  max-width: 100px;
+  padding: 10px 20px 10px 10px;
+  border-radius: 10px;
+  margin-left: 20px;
+  border: 1.5px solid hsl(0, 0%, 86%);
+  cursor: pointer;
+ 
+}
+input:focus{
+  outline: 1.5px solid hsl(259, 100%, 65%);
+}
+header span {
+  position: absolute;
+  margin-top: 85px;
+  font-style: italic;
+  font-size: small;
+  margin-left: -127px;
+  color: red;
+}
+hr {
+  width: 498px;
+  position: absolute;
+  margin-top: 38px;
+  border: 1px solid hsl(0, 0%, 86%);
+}
+button {
+  background-color: hsl(259, 100%, 65%);
+  margin-left: 500px;
+  border: none;
+  float: right;
+  border-radius: 50%;
+  padding: 20px;
+  margin-right: -100px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: rgb(63, 61, 61);
+}
+.spanday,
+.spanmonth,
+.spanyear {
+  color: hsl(259, 100%, 65%);
+}
+
+main div {
+  font-family: "Poppins", sans-serif;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 48px;
+  margin-left: -200px;
+}
+
+@media (max-width: 710px) {
+  body{
+    padding: 10px;
+  }
+  .content {
+    padding: 30px 30px 30px 60px;
+    border-radius: 0px 0px 70px 0px;
+    margin-right: 10px;
+  }
+  header {
+    margin-left: -40px;
+  }
+  input {
+    margin-left: 5px;
+    width: 55px;
+    padding: 13px 15px;
+    font-size: 23px;
+    margin-bottom: 25px;
+    font-weight: 800;
+  }
+  hr {
+    width: 250px;
+    position: relative;
+    margin-left: -30px;
+  }
+  header span {
+    margin-top: 87px;
+    font-style: italic;
+    font-size: 10px;
+    margin-left: -87px;
+  }
+ .middle{
+  margin-left: -6px;
+ }
+  button {
+    z-index: 1;
+    position: absolute;
+    margin-left: 60px;
+    padding: 10px;
+    margin-bottom: 0px;
+  }
+  main div {
+    font-weight: 800;
+    font-size: 48px;
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+  main {
+    margin-top: 30px;
+  }
+  main div {
+    margin-left: -20px;
+  }
+}
+	</style>
+  </head>
+  <body>
+    <div class="phone">
+      <div class="content">
+	  
+	  <svg xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44"><g fill="none" stroke="#FFF" stroke-width="2"><path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"/></g></svg>
+	  
+	  
+        <header>
+          <label for="day"><small>DAY</small></label>
+          <input type="number" class="day" placeholder="DD" required />
+          <span><small class="emptyerror"></small></span>
+          <label for="month"><small>MONTH</small></label>
+          <input
+            type="number"
+            class="month"
+            placeholder="MM"
+            max="12"
+            required />
+          <span><small class="emptyerror middle"></small></span>
+          <label for="year"><small>YEAR</small></label>
+          <input
+            type="number"
+            class="year"
+            placeholder="YYYY"
+            size="4"
+            required />
+          <span><small class="emptyerror"></small></span>
+        </header>
+        <div>
+          <button class="button"><img src="icon-arrow.svg" alt=""></button>
+          <hr />
+        </div>
+        <main>
+          <div><span class="spanyear">- -</span>years</div>
+          <div><span class="spanmonth">- -</span>month</div>
+          <div><span class="spanday">- -</span>days</div>
+        </main>
+      </div>
+    </div>
+    <script src="agecalculator.js">
+	</script>
+	<script>
+		const input = document.querySelectorAll("input");
+const label = document.querySelectorAll("label small");
+const output = document.querySelectorAll("main div span");
+const error = document.querySelectorAll('.emptyerror')
+const dayValue = document.querySelector(".day");
+const monthValue = document.querySelector(".month");
+const yearValue = document.querySelector(".year");
+const button = document.querySelector(".button");
+const day= document.querySelector('.spanday')
+const month1 = document.querySelector('.spanmonth')
+const year = document.querySelector('.spanyear')
+
+const todayDate = new Date()
+let todayday = todayDate.getDate()
+let todayMonth = todayDate.getMonth() + 1
+let todayYear = todayDate.getFullYear()
+const month = [31,28,31,30,31,30,31,31,30,31,30,31]
+
+button.addEventListener('click',()=>{
+
+    let y = todayYear - Number(yearValue.value)
+    let m = todayMonth - Number(monthValue.value)
+    let d = todayday - Number(dayValue.value)
+   
+    if(d<0){
+     m = m - 1
+     d = d + month[Number(monthValue.value) - 1]
+    }
+    if(m<0){
+     y = y -1
+     m = m + 12
+    }
+    day.textContent = d
+    month1.textContent = m
+    year.textContent = y
+    input.forEach(item=>item.style.border = '1.5px solid hsl(0, 0%, 86%)')
+    label.forEach(item=>item.style.color = "hsl(0, 1%, 44%)")
+  
+
+
+ // validating input age
+ if(!monthValue.value){
+  error[1].textContent = 'This field is required'
+  input[1].style.border = '1.5px solid red'
+  label[1].style.color = "red"
+  output.forEach(item=>item.innerText = "- -")
+ }
+ else if(monthValue.value > 12 || monthValue.value < 1){
+  error[1].textContent ='Must be a valid month'
+  input.forEach(item=>item.style.border = '1.5px solid red')
+  label.forEach(item=>item.style.color = "red")
+  output.forEach(item=>item.innerText = "- -")
+ }
+else{
+  error[1].textContent = ''
+  input[1].style.border = '1.5px solid hsl(0, 0%, 86%)'
+  label[1].style.color = "hsl(0, 1%, 44%)"
+}
+ if(!dayValue.value){
+  error[0].textContent ='This field is required'
+  input[0].style.border = '1.5px solid red'
+  label[0].style.color = "red"
+  output.forEach(item=>item.innerText = "- -")
+ }
+ else if(dayValue.value > month[monthValue.value - 1] || dayValue.value < 1){
+  error[0].textContent ='Must be a valid date'
+  input.forEach(item=>item.style.border = '1.5px solid red')
+  label.forEach(item=>item.style.color = "red")
+  output.forEach(item=>item.innerText = "- -")
+ }
+ else{
+  error[0].textContent = ''
+  input[0].style.border = '1.5px solid hsl(0, 0%, 86%)'
+  label[0].style.color = "hsl(0, 1%, 44%)"
+}
+ if(!yearValue.value){
+  error[2].textContent ='This field is required'
+  input[2].style.border = '1.5px solid red'
+  label[2].style.color = "red"
+  output.forEach(item=>item.innerText = "- -")
+ }
+ else if(yearValue.value > todayYear || new Date(yearValue.value,monthValue.value-1,dayValue.value)>todayDate){
+  error[2].textContent ='Must be in the past'
+  input.forEach(item=>item.style.border = '1.5px solid red')
+  label.forEach(item=>item.style.color = "red")
+  output.forEach(item=>item.innerText = "- -")
+ }
+ else{
+  error[2].textContent = ''
+  input[2].style.border = '1.5px solid hsl(0, 0%, 86%)'
+  label[2].style.color = "hsl(0, 1%, 44%)"
+}
+})
+output.forEach(item=>console.log(item.innerText))
+	</script>
+  </body>
+</html>
